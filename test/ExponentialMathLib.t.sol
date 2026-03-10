@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import { Test } from "forge-std/Test.sol";
-import { ExponentialMathLib } from "../src/libraries/ExponentialMathLib.sol";
+import {Test} from "forge-std/Test.sol";
+import {ExponentialMathLib} from "../src/libraries/ExponentialMathLib.sol";
 
 contract ExponentialMathLibTest is Test {
     /// @dev Tolerance: 1e14 (0.0001% of 1e18) - Taylor approximation may have small error
@@ -13,8 +13,8 @@ contract ExponentialMathLibTest is Test {
     }
 
     function test_expNegXOver1000_clamp() public pure {
-        assertEq(ExponentialMathLib.expNegXOver1000(10000), 0);
-        assertEq(ExponentialMathLib.expNegXOver1000(99999), 0);
+        assertEq(ExponentialMathLib.expNegXOver1000(10_000), 0);
+        assertEq(ExponentialMathLib.expNegXOver1000(99_999), 0);
     }
 
     /// @dev Test against precomputed known values of e^(-x/1000) (1e18 scale)
@@ -47,7 +47,7 @@ contract ExponentialMathLibTest is Test {
 
     /// @dev Output bounds: result must be in [0, 1e18]
     function test_expNegXOver1000_bounds() public pure {
-        for (uint256 x = 0; x <= 10000; x += 100) {
+        for (uint256 x = 0; x <= 10_000; x += 100) {
             uint256 result = ExponentialMathLib.expNegXOver1000(x);
             assertLe(result, 1e18, "x");
             assertGe(result, 0, "x");

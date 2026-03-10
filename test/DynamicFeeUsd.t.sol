@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import { Test } from "forge-std/Test.sol";
-import { DynamicFeeUsd } from "../src/DynamicFeeUsd.sol";
+import {Test} from "forge-std/Test.sol";
+import {DynamicFeeUsd} from "../src/DynamicFeeUsd.sol";
 
 interface AggregatorV3Interface {
     function decimals() external view returns (uint8);
@@ -143,9 +143,6 @@ contract DynamicFeeUsdTest is Test {
 
     function test_determinism() public view {
         uint256 volume = 5 ether;
-        assertEq(
-            feeContract.calculateDynamicFee(volume),
-            feeContract.calculateDynamicFee(volume)
-        );
+        assertEq(feeContract.calculateDynamicFee(volume), feeContract.calculateDynamicFee(volume));
     }
 }

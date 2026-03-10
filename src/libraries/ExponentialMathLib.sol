@@ -26,7 +26,7 @@ library ExponentialMathLib {
      */
     function expNegXOver1000(uint256 x) internal pure returns (uint256 value) {
         if (x == 0) return UNIT;
-        if (x >= 10000) return 0;
+        if (x >= 10_000) return 0;
 
         // Range reduction: z = x/16000, so e^(-x/1000) = (e^(-z))^16 = 1/(e^z)^16
         // Compute e^z for z = x/16000 in [0, 0.625], then result = 1e36 / (e^z)^16

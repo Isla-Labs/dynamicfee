@@ -40,7 +40,7 @@ pragma solidity ^0.8.34;
  *     Four tiers apply at different volume thresholds (0, 8 ETH, 80 ETH, 800 ETH).
  */
 
-import { ExponentialMathLib } from "./libraries/ExponentialMathLib.sol";
+import {ExponentialMathLib} from "./libraries/ExponentialMathLib.sol";
 
 /**
  * @title DynamicFeeLib
@@ -67,15 +67,15 @@ library DynamicFeeLib {
     uint256 internal constant FEE_START_TIER_3 = 90;
     uint256 internal constant FEE_START_TIER_4 = 60;
 
-    uint256 internal constant ALPHA_TIER_1 = 300_000;   // scaled for ETH
+    uint256 internal constant ALPHA_TIER_1 = 300_000; // scaled for ETH
     uint256 internal constant ALPHA_TIER_2 = 50_000;
     uint256 internal constant ALPHA_TIER_3 = 100_000;
     uint256 internal constant ALPHA_TIER_4 = 300_000;
 
     uint256 internal constant TIER_1_THRESHOLD_ETH = 0;
-    uint256 internal constant TIER_2_THRESHOLD_ETH = 2e18;   // 2 ETH
-    uint256 internal constant TIER_3_THRESHOLD_ETH = 20e18;   // 20 ETH
-    uint256 internal constant TIER_4_THRESHOLD_ETH = 200e18;   // 200 ETH
+    uint256 internal constant TIER_2_THRESHOLD_ETH = 2e18; // 2 ETH
+    uint256 internal constant TIER_3_THRESHOLD_ETH = 20e18; // 20 ETH
+    uint256 internal constant TIER_4_THRESHOLD_ETH = 200e18; // 200 ETH
 
     uint256 internal constant SCALE_PARAMETER = 1000;
 
@@ -120,7 +120,11 @@ library DynamicFeeLib {
      * @return vStartEth Starting volume threshold for fee tier
      * @return feeStart Precomputed fee (bps) at v_start for fee tier
      */
-    function _getTierParameters(uint256 volumeEth) internal pure returns (uint256 alpha, uint256 vStartEth, uint256 feeStart) {
+    function _getTierParameters(uint256 volumeEth)
+        internal
+        pure
+        returns (uint256 alpha, uint256 vStartEth, uint256 feeStart)
+    {
         if (volumeEth <= TIER_2_THRESHOLD_ETH) return (ALPHA_TIER_1, TIER_1_THRESHOLD_ETH, FEE_START_TIER_1);
         if (volumeEth <= TIER_3_THRESHOLD_ETH) return (ALPHA_TIER_2, TIER_2_THRESHOLD_ETH, FEE_START_TIER_2);
         if (volumeEth <= TIER_4_THRESHOLD_ETH) return (ALPHA_TIER_3, TIER_3_THRESHOLD_ETH, FEE_START_TIER_3);

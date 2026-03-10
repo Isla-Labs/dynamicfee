@@ -38,14 +38,20 @@ pragma solidity ^0.8.34;
  *
  */
 
-import { ExponentialMathLib } from "./libraries/ExponentialMathLib.sol";
+import {ExponentialMathLib} from "./libraries/ExponentialMathLib.sol";
 
 interface AggregatorV3Interface {
     function decimals() external view returns (uint8);
     function description() external view returns (string memory);
     function version() external view returns (uint256);
-    function getRoundData(uint80 _roundId) external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
-    function latestRoundData() external view returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+    function getRoundData(uint80 _roundId)
+        external
+        view
+        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
+    function latestRoundData()
+        external
+        view
+        returns (uint80 roundId, int256 answer, uint256 startedAt, uint256 updatedAt, uint80 answeredInRound);
 }
 
 /**
@@ -88,7 +94,7 @@ abstract contract DynamicFeeUsd {
     uint256 internal constant TIER_1_THRESHOLD_USD = 0;
     uint256 internal constant TIER_2_THRESHOLD_USD = 500;
     uint256 internal constant TIER_3_THRESHOLD_USD = 5000;
-    uint256 internal constant TIER_4_THRESHOLD_USD = 50000;
+    uint256 internal constant TIER_4_THRESHOLD_USD = 50_000;
 
     uint256 internal constant SCALE_PARAMETER = 1000;
 
@@ -98,7 +104,7 @@ abstract contract DynamicFeeUsd {
 
     constructor(address _chainlinkEthUsd) {
         CHAINLINK_ETH_USD = _chainlinkEthUsd;
-        FALLBACK_ETH_PRICE = 3000000000; // 6 decimals
+        FALLBACK_ETH_PRICE = 3_000_000_000; // 6 decimals
 
         uint8 _dec = 8;
         if (CHAINLINK_ETH_USD != address(0)) {
@@ -156,7 +162,11 @@ abstract contract DynamicFeeUsd {
      * @return vStartUsd Starting volume threshold for fee tier
      * @return feeStart Precomputed fee (bps) at v_start for fee tier
      */
-    function _getTierParameters(uint256 volumeUsd) internal pure returns (uint256 alpha, uint256 vStartUsd, uint256 feeStart) {
+    function _getTierParameters(uint256 volumeUsd)
+        internal
+        pure
+        returns (uint256 alpha, uint256 vStartUsd, uint256 feeStart)
+    {
         if (volumeUsd <= TIER_2_THRESHOLD_USD) return (ALPHA_TIER_1, TIER_1_THRESHOLD_USD, FEE_START_TIER_1);
         if (volumeUsd <= TIER_3_THRESHOLD_USD) return (ALPHA_TIER_2, TIER_2_THRESHOLD_USD, FEE_START_TIER_2);
         if (volumeUsd <= TIER_4_THRESHOLD_USD) return (ALPHA_TIER_3, TIER_3_THRESHOLD_USD, FEE_START_TIER_3);
@@ -181,9 +191,9 @@ abstract contract DynamicFeeUsd {
     function _ethPriceUsd() internal view returns (uint256 ethPriceUsd) {
         if (CHAINLINK_ETH_USD == address(0)) return FALLBACK_ETH_PRICE;
 
-        try AggregatorV3Interface(CHAINLINK_ETH_USD).latestRoundData()
-            returns (uint80 roundId, int256 answer, uint256 /* startedAt */, uint256 updatedAt, uint80 answeredInRound)
-        {
+        try AggregatorV3Interface(CHAINLINK_ETH_USD).latestRoundData() returns (
+            uint80 roundId, int256 answer, uint256, /* startedAt */ uint256 updatedAt, uint80 answeredInRound
+        ) {
             if (answer > 0 && updatedAt != 0 && answeredInRound >= roundId) {
                 if (block.timestamp < updatedAt || block.timestamp - updatedAt > MAX_ORACLE_AGE) {
                     return FALLBACK_ETH_PRICE;
