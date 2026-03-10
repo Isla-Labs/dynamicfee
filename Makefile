@@ -7,7 +7,7 @@ LIB_PATH := src/libraries/ExponentialMathLib.sol:ExponentialMathLib
 deploy-base-sepolia-exp:
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployExponentialMathLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE_SEPOLIA)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-sepolia-lib:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
@@ -16,7 +16,7 @@ deploy-base-sepolia-lib:
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE_SEPOLIA)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-sepolia-eth:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
@@ -25,7 +25,7 @@ deploy-base-sepolia-eth:
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE_SEPOLIA)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-sepolia-usd:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
@@ -34,7 +34,7 @@ deploy-base-sepolia-usd:
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE_SEPOLIA)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-sepolia: deploy-base-sepolia-exp deploy-base-sepolia-lib deploy-base-sepolia-eth deploy-base-sepolia-usd
 
@@ -42,7 +42,7 @@ deploy-base-sepolia: deploy-base-sepolia-exp deploy-base-sepolia-lib deploy-base
 deploy-base-exp:
 	forge script script/DeployBase/DeployBase.s.sol:DeployExponentialMathLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-lib:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
@@ -51,7 +51,7 @@ deploy-base-lib:
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-eth:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
@@ -60,7 +60,7 @@ deploy-base-eth:
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base-usd:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
@@ -69,7 +69,7 @@ deploy-base-usd:
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 
 deploy-base: deploy-base-exp deploy-base-lib deploy-base-eth deploy-base-usd
 
@@ -77,7 +77,7 @@ deploy-base: deploy-base-exp deploy-base-lib deploy-base-eth deploy-base-usd
 deploy-ethereum-sepolia-exp:
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployExponentialMathLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM_MAINNET)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-sepolia-lib:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
@@ -86,7 +86,7 @@ deploy-ethereum-sepolia-lib:
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM_MAINNET)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-sepolia-eth:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
@@ -95,7 +95,7 @@ deploy-ethereum-sepolia-eth:
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM_MAINNET)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-sepolia-usd:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
@@ -104,7 +104,7 @@ deploy-ethereum-sepolia-usd:
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM_MAINNET)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-sepolia: deploy-ethereum-sepolia-exp deploy-ethereum-sepolia-lib deploy-ethereum-sepolia-eth deploy-ethereum-sepolia-usd
 
@@ -112,7 +112,7 @@ deploy-ethereum-sepolia: deploy-ethereum-sepolia-exp deploy-ethereum-sepolia-lib
 deploy-ethereum-exp:
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployExponentialMathLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-lib:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
@@ -121,7 +121,7 @@ deploy-ethereum-lib:
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-eth:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
@@ -130,7 +130,7 @@ deploy-ethereum-eth:
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum-usd:
 	@EXP_LIB=$${EXP_LIB:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
@@ -139,7 +139,7 @@ deploy-ethereum-usd:
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
 		--libraries "$(LIB_PATH):$$EXP_LIB" \
-		--verify --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
+		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 
 deploy-ethereum: deploy-ethereum-exp deploy-ethereum-lib deploy-ethereum-eth deploy-ethereum-usd
 
