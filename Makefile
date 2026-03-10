@@ -16,7 +16,11 @@ deploy-base-sepolia-exp:
 
 deploy-base-sepolia-lib:
 	@EXP_LIB=$${EXP_LIB_BASE_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-sepolia-exp) or set EXP_LIB_BASE_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
@@ -26,7 +30,11 @@ deploy-base-sepolia-lib:
 
 deploy-base-sepolia-eth:
 	@EXP_LIB=$${EXP_LIB_BASE_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-sepolia-exp) or set EXP_LIB_BASE_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
@@ -36,7 +44,11 @@ deploy-base-sepolia-eth:
 
 deploy-base-sepolia-usd:
 	@EXP_LIB=$${EXP_LIB_BASE_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-sepolia-exp) or set EXP_LIB_BASE_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBaseSepolia.s.sol/84532/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBaseSepolia.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_SEPOLIA_RPC_URL) \
@@ -55,7 +67,11 @@ deploy-base-exp:
 
 deploy-base-lib:
 	@EXP_LIB=$${EXP_LIB_BASE:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-exp) or set EXP_LIB_BASE"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
@@ -65,7 +81,11 @@ deploy-base-lib:
 
 deploy-base-eth:
 	@EXP_LIB=$${EXP_LIB_BASE:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-exp) or set EXP_LIB_BASE"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
@@ -75,7 +95,11 @@ deploy-base-eth:
 
 deploy-base-usd:
 	@EXP_LIB=$${EXP_LIB_BASE:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-base-exp) or set EXP_LIB_BASE"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-base-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployBase.s.sol/8453/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployBase/DeployBase.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(BASE_MAINNET_RPC_URL) \
@@ -94,7 +118,11 @@ deploy-ethereum-sepolia-exp:
 
 deploy-ethereum-sepolia-lib:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-sepolia-exp) or set EXP_LIB_ETHEREUM_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
@@ -104,7 +132,11 @@ deploy-ethereum-sepolia-lib:
 
 deploy-ethereum-sepolia-eth:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-sepolia-exp) or set EXP_LIB_ETHEREUM_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
@@ -114,7 +146,11 @@ deploy-ethereum-sepolia-eth:
 
 deploy-ethereum-sepolia-usd:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM_SEPOLIA:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-sepolia-exp) or set EXP_LIB_ETHEREUM_SEPOLIA"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-sepolia-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereumSepolia.s.sol/11155111/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereumSepolia.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_SEPOLIA_RPC_URL) \
@@ -133,7 +169,11 @@ deploy-ethereum-exp:
 
 deploy-ethereum-lib:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-exp) or set EXP_LIB_ETHEREUM"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeLib \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
@@ -143,7 +183,11 @@ deploy-ethereum-lib:
 
 deploy-ethereum-eth:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-exp) or set EXP_LIB_ETHEREUM"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeEth \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \
@@ -153,7 +197,11 @@ deploy-ethereum-eth:
 
 deploy-ethereum-usd:
 	@EXP_LIB=$${EXP_LIB_ETHEREUM:-$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json 2>/dev/null)}; \
-	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then echo "Error: Deploy ExponentialMathLib first (make deploy-ethereum-exp) or set EXP_LIB_ETHEREUM"; exit 1; fi; \
+	if [ -z "$$EXP_LIB" ] || [ "$$EXP_LIB" = "null" ]; then \
+		echo "ExponentialMathLib not found. Deploying..."; \
+		$(MAKE) deploy-ethereum-exp; \
+		EXP_LIB=$$(jq -r '.returns."0".value // .transactions[0].contractAddress' broadcast/DeployEthereum.s.sol/1/run-latest.json); \
+	fi; \
 	echo "ExponentialMathLib: $$EXP_LIB"; \
 	forge script script/DeployEthereum/DeployEthereum.s.sol:DeployDynamicFeeUsd \
 		--private-key $(PRIVATE_KEY) --rpc-url $(ETHEREUM_MAINNET_RPC_URL) \

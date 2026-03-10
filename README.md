@@ -105,7 +105,7 @@ make deploy-base-sepolia-eth   # DynamicFeeEth
 make deploy-base-sepolia-usd   # DynamicFeeUsd
 ```
 
-For lib/eth/usd targets, `EXP_LIB` is read from the broadcast file after a prior `-exp` deploy, or you can set `EXP_LIB` in `.env` if you deployed ExponentialMathLib elsewhere. Chainlink ETH/USD addresses are set per network in the scripts.
+For lib/eth/usd targets, ExponentialMathLib is resolved in order: (1) chain-specific `EXP_LIB_*` in `.env` if set, (2) broadcast file from a prior `-exp` deploy, or (3) auto-deploy ExponentialMathLib first. Chainlink ETH/USD addresses are set per network in the scripts.
 
 ## Blueprint
 
