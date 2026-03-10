@@ -1,0 +1,9 @@
+{
+  "name": "dynamicfee",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "@types/node": "^22"
+  }
+}

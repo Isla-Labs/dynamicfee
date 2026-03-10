@@ -72,7 +72,21 @@ Use when you want a simple, trustless dynamic fee library without external price
 | `DynamicFeeUsd` | Abstract | USD-denominated; Chainlink + fallback |
 | `ExponentialMathLib` | Library | e^(-x/1000) with 18-decimal precision |
 
-## Deployment
+## Historical Deployments
+
+Latest deployments can be found [here](./Deployments.md) and historical deployment logs for Base and Base Sepolia can be found in the [deployments](./deployments/) folder.
+
+## Getting Started
+
+Install Foundry: `curl -L https://foundry.paradigm.xyz | bash && source ~/.bashrc && foundryup`
+
+```bash
+forge build
+forge test
+forge fmt
+```
+
+## Deployment Instructions
 
 Deploy ExponentialMathLib first, then deploy DynamicFeeLib, DynamicFeeEth, and/or DynamicFeeUsd. You can deploy all at once or choose specific contracts.
 
@@ -94,16 +108,6 @@ make deploy-base-sepolia-usd   # DynamicFeeUsd
 ```
 
 For lib/eth/usd targets, `EXP_LIB` is read from the broadcast file after a prior `-exp` deploy, or you can set `EXP_LIB` in `.env` if you deployed ExponentialMathLib elsewhere. Chainlink ETH/USD addresses are set per network in the scripts.
-
-## Getting Started
-
-Install Foundry: `curl -L https://foundry.paradigm.xyz | bash && source ~/.bashrc && foundryup`
-
-```bash
-forge build
-forge test
-forge fmt
-```
 
 ## Blueprint
 

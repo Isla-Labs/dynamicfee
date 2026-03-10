@@ -1,0 +1,15 @@
+# Contract Addresses
+
+Networks that DynamicFee is deployed to:
+
+- Mainnets: None
+- Testnets: Base Sepolia
+
+## Mainnet Deployments
+
+## Testnet Deployments
+### Base Sepolia (84532)
+| Contract | Address | Transaction | Commit |
+|---|---|---|---|
+| ExponentialMathLib | [0x2b3c...37f1](https://sepolia.basescan.org/address/0x2b3c8603fc3d8e41598a0444e5cf0907571637f1) | [0xab68...f538](https://sepolia.basescan.org/tx/0xab68c533f0e7e251ef38fbd5cda948815a03175b18dee5cc3ce0d972c96bf538) | [ed394b0](https://github.com/highpotential-xyz/dynamicfee/commit/ed394b0) | 
+
