@@ -25,16 +25,6 @@ The fee rate decays exponentially as transaction volume increases. Four predefin
 
 ## Variants
 
-### DynamicFeeEth
-
-ETH-denominated tiers. No oracle required.
-
-- **Tiers:** Fully configurable; placeholder uses 0, 2 ETH, 20 ETH, 200 ETH
-- **Fee bounds:** Fully configurable; placeholder uses 2.00% max (low volume) → 0.60% min (high volume)
-- **Alpha values:** Fully configurable; placeholder uses variable decay factors for each volume tier (300, 50, 100, 300)
-
-Use when you want simple, trustless fee logic without external price feeds.
-
 ### DynamicFeeUsd
 
 USD-denominated tiers via Chainlink ETH/USD price feed. Stable fee tiers regardless of ETH price.
@@ -45,6 +35,16 @@ USD-denominated tiers via Chainlink ETH/USD price feed. Stable fee tiers regardl
 - **Fallback:** Uses `FALLBACK_ETH_PRICE` when feed is stale or unavailable (e.g. testnets)
 
 Use when you want volume-based tiers in USD terms.
+
+### DynamicFeeEth
+
+ETH-denominated tiers. No oracle required.
+
+- **Tiers:** Fully configurable; placeholder uses 0, 2 ETH, 20 ETH, 200 ETH
+- **Fee bounds:** Fully configurable; placeholder uses 2.00% max (low volume) → 0.60% min (high volume)
+- **Alpha values:** Fully configurable; placeholder uses variable decay factors for each volume tier (300, 50, 100, 300)
+
+Use when you want simple, trustless fee logic without external price feeds.
 
 ### DynamicFeeLib
 
