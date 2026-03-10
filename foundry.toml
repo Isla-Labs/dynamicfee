@@ -1,0 +1,36 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+evm_version = "cancun"
+solc = "0.8.34"
+optimizer = true
+optimizer_runs = 200
+
+[profile.ci]
+inherits = "default"
+fuzz.runs = 1024
+fuzz.depth = 256
+
+[fuzz]
+runs = 256
+depth = 100
+
+[fmt]
+line_length = 120
+number_underscore = "thousands"
+
+[invariant]
+fail_on_revert = true
+
+[etherscan]
+base = { key = "${BASESCAN_API_KEY}" }
+base_sepolia = { key = "${BASESCAN_API_KEY}" }
+etherscan = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
+
+[rpc_endpoints]
+base = "${BASE_MAINNET_RPC_URL}"
+base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+ethereum = "${ETHEREUM_MAINNET_RPC_URL}"
+sepolia = "${ETHEREUM_SEPOLIA_RPC_URL}"
