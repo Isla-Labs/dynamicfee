@@ -48,14 +48,8 @@ contract MockChainlinkEthUsd is AggregatorV3Interface {
     }
 }
 
-contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(
-        address _chainlinkEthUsd
-    ) DynamicFeeUsd(_chainlinkEthUsd) { }
-}
-
 contract DynamicFeeUsdTest is Test {
-    DynamicFeeUsdConcrete feeContract;
+    DynamicFeeUsd feeContract;
     MockChainlinkEthUsd mockFeed;
 
     uint256 constant FEE_MIN_BPS = 100;
@@ -65,7 +59,7 @@ contract DynamicFeeUsdTest is Test {
 
     function setUp() public {
         // Use address(0) for fallback-only tests; deploy mock for oracle tests
-        feeContract = new DynamicFeeUsdConcrete(address(0));
+        feeContract = new DynamicFeeUsd(address(0));
     }
 
     // ------------------------------------------
@@ -112,7 +106,7 @@ contract DynamicFeeUsdTest is Test {
     function test_oracleMode_validPrice() public {
         // $3000/ETH, 8 decimals
         mockFeed = new MockChainlinkEthUsd(3000e8);
-        feeContract = new DynamicFeeUsdConcrete(address(mockFeed));
+        feeContract = new DynamicFeeUsd(address(mockFeed));
 
         uint256 fee = feeContract.calculateDynamicFee(1 ether);
         assertGe(fee, FEE_MIN_BPS);
@@ -121,11 +115,11 @@ contract DynamicFeeUsdTest is Test {
 
     function test_oracleMode_differentPrices() public {
         mockFeed = new MockChainlinkEthUsd(2000e8);
-        feeContract = new DynamicFeeUsdConcrete(address(mockFeed));
+        feeContract = new DynamicFeeUsd(address(mockFeed));
         uint256 feeAt2k = feeContract.calculateDynamicFee(1 ether);
 
         mockFeed = new MockChainlinkEthUsd(4000e8);
-        feeContract = new DynamicFeeUsdConcrete(address(mockFeed));
+        feeContract = new DynamicFeeUsd(address(mockFeed));
         uint256 feeAt4k = feeContract.calculateDynamicFee(1 ether);
 
         // Same ETH volume, different USD value: 1 ETH at $4k = $4k volume, at $2k = $2k volume
@@ -135,7 +129,7 @@ contract DynamicFeeUsdTest is Test {
 
     function test_oracleMode_staleDataUsesFallback() public {
         mockFeed = new MockChainlinkEthUsd(3000e8);
-        feeContract = new DynamicFeeUsdConcrete(address(mockFeed));
+        feeContract = new DynamicFeeUsd(address(mockFeed));
 
         // Make data stale (> 1 day)
         vm.warp(block.timestamp + 2 days);

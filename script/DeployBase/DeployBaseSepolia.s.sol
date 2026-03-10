@@ -2,16 +2,6 @@
 pragma solidity ^0.8.34;
 
 import { Script } from "forge-std/Script.sol";
-import { DynamicFeeEth } from "../../src/DynamicFeeEth.sol";
-import { DynamicFeeUsd } from "../../src/DynamicFeeUsd.sol";
-
-contract DynamicFeeEthConcrete is DynamicFeeEth { }
-
-contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(
-        address _chainlinkEthUsd
-    ) DynamicFeeUsd(_chainlinkEthUsd) { }
-}
 
 address constant CHAINLINK_ETH_USD_BASE_SEPOLIA = 0x4aDC67696bA383F43DD60A9e78F2C97Fbbfc7cb1;
 
@@ -36,17 +26,17 @@ contract DeployDynamicFeeLib is Script {
 contract DeployDynamicFeeEth is Script {
     function run() external returns (address) {
         vm.startBroadcast();
-        DynamicFeeEthConcrete feeEth = new DynamicFeeEthConcrete();
+        address feeEth = deployCode("src/DynamicFeeEth.sol:DynamicFeeEth");
         vm.stopBroadcast();
-        return address(feeEth);
+        return feeEth;
     }
 }
 
 contract DeployDynamicFeeUsd is Script {
     function run() external returns (address) {
         vm.startBroadcast();
-        DynamicFeeUsdConcrete feeUsd = new DynamicFeeUsdConcrete(CHAINLINK_ETH_USD_BASE_SEPOLIA);
+        address feeUsd = deployCode("src/DynamicFeeUsd.sol:DynamicFeeUsd", abi.encode(CHAINLINK_ETH_USD_BASE_SEPOLIA));
         vm.stopBroadcast();
-        return address(feeUsd);
+        return feeUsd;
     }
 }

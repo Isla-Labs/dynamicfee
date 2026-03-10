@@ -13,8 +13,6 @@ contract DynamicFeeLibHarness {
     }
 }
 
-contract DynamicFeeEthHarness is DynamicFeeEth { }
-
 contract DynamicFeeLibTest is Test {
     DynamicFeeLibHarness harness;
 
@@ -164,7 +162,7 @@ contract DynamicFeeLibTest is Test {
 
     /// @dev DynamicFeeLib and DynamicFeeEth share the same formula; fees must match
     function test_parityWithDynamicFeeEth() public {
-        DynamicFeeEthHarness ethHarness = new DynamicFeeEthHarness();
+        DynamicFeeEth ethHarness = new DynamicFeeEth();
         uint256[] memory volumes = new uint256[](6);
         volumes[0] = 0;
         volumes[1] = 1 ether;

@@ -4,16 +4,14 @@ pragma solidity ^0.8.34;
 import { Test } from "forge-std/Test.sol";
 import { DynamicFeeEth } from "../src/DynamicFeeEth.sol";
 
-contract DynamicFeeEthConcrete is DynamicFeeEth { }
-
 contract DynamicFeeEthTest is Test {
-    DynamicFeeEthConcrete feeContract;
+    DynamicFeeEth feeContract;
 
     uint256 constant FEE_MIN_BPS = 60;
     uint256 constant FEE_MAX_BPS = 200;
 
     function setUp() public {
-        feeContract = new DynamicFeeEthConcrete();
+        feeContract = new DynamicFeeEth();
     }
 
     // ------------------------------------------
