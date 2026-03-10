@@ -112,8 +112,8 @@ abstract contract DynamicFeeUsd {
     constructor(
         address _chainlinkEthUsd
     ) {
-        CHAINLINK_ETH_USD = _chainlinkEthUsd;
-        FALLBACK_ETH_PRICE = 3_000_000_000; // 6 decimals
+        CHAINLINK_ETH_USD = _chainlinkEthUsd; // address(0) uses FALLBACK_ETH_PRICE
+        FALLBACK_ETH_PRICE = 2_500_000_000; // 6 decimals
 
         uint8 _dec = 8;
         if (CHAINLINK_ETH_USD != address(0)) {

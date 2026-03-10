@@ -13,7 +13,7 @@ contract DynamicFeeUsdConcrete is DynamicFeeUsd {
     ) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
-address constant CHAINLINK_ETH_USD_BASE_SEPOLIA = 0x4adc67696Ba383f43Dd60a9E78F2c97Fbb10B4E1;
+address constant CHAINLINK_ETH_USD_BASE_SEPOLIA = 0x4aDC67696bA383F43DD60A9e78F2C97Fbbfc7cb1;
 
 contract DeployExponentialMathLib is Script {
     function run() external returns (address) {

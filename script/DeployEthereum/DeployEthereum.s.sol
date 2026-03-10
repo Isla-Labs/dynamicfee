@@ -13,7 +13,7 @@ contract DynamicFeeUsdConcrete is DynamicFeeUsd {
     ) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
-address constant CHAINLINK_ETH_USD_ETHEREUM = 0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419;
+address constant CHAINLINK_ETH_USD_ETHEREUM = 0xd82562bb17557231Cd871e1B2525F3AB8d63D409; // Standard Proxy
 
 contract DeployExponentialMathLib is Script {
     function run() external returns (address) {
