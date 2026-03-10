@@ -27,7 +27,9 @@ contract DynamicFeeEthTest is Test {
         assertEq(fee, 200, "zero volume: 2%");
     }
 
-    function test_feeBounds_fuzz(uint256 volumeEth) public view {
+    function test_feeBounds_fuzz(
+        uint256 volumeEth
+    ) public view {
         volumeEth = bound(volumeEth, 0, 10_000_000 ether);
         uint256 fee = feeContract.calculateDynamicFee(volumeEth);
         assertGe(fee, FEE_MIN_BPS);

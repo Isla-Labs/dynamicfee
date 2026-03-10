@@ -24,7 +24,9 @@ library ExponentialMathLib {
      * @param x Unscaled exponent input, 0 <= x < 10000
      * @return value The 1e18-scaled result of e^(-x/1000)
      */
-    function expNegXOver1000(uint256 x) internal pure returns (uint256 value) {
+    function expNegXOver1000(
+        uint256 x
+    ) internal pure returns (uint256 value) {
         if (x == 0) return UNIT;
         if (x >= 10_000) return 0;
 
@@ -49,7 +51,9 @@ library ExponentialMathLib {
      * @notice Taylor series for e^z, z in [0, 0.625e18] (1e18-scaled)
      * @dev e^z = 1 + z + z²/2! + z³/3! + ... + z^9/9!
      */
-    function _expTaylor(uint256 z) internal pure returns (uint256) {
+    function _expTaylor(
+        uint256 z
+    ) internal pure returns (uint256) {
         uint256 sum = UNIT;
         uint256 term = z;
 

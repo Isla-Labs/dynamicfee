@@ -18,17 +18,23 @@ contract MockChainlinkEthUsd is AggregatorV3Interface {
     uint256 public updatedAt;
     uint8 public override decimals = 8;
 
-    constructor(int256 _price) {
+    constructor(
+        int256 _price
+    ) {
         price = _price;
         updatedAt = block.timestamp;
     }
 
-    function setPrice(int256 _price) external {
+    function setPrice(
+        int256 _price
+    ) external {
         price = _price;
         updatedAt = block.timestamp;
     }
 
-    function setUpdatedAt(uint256 _updatedAt) external {
+    function setUpdatedAt(
+        uint256 _updatedAt
+    ) external {
         updatedAt = _updatedAt;
     }
 
@@ -43,7 +49,9 @@ contract MockChainlinkEthUsd is AggregatorV3Interface {
 }
 
 contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) { }
+    constructor(
+        address _chainlinkEthUsd
+    ) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
 contract DynamicFeeUsdTest is Test {
@@ -88,7 +96,9 @@ contract DynamicFeeUsdTest is Test {
         assertGe(fee3, fee4);
     }
 
-    function test_fallbackMode_fuzz(uint256 volumeEth) public view {
+    function test_fallbackMode_fuzz(
+        uint256 volumeEth
+    ) public view {
         volumeEth = bound(volumeEth, 0, 10_000 ether);
         uint256 fee = feeContract.calculateDynamicFee(volumeEth);
         assertGe(fee, FEE_MIN_BPS);

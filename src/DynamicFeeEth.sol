@@ -89,7 +89,9 @@ abstract contract DynamicFeeEth {
      * @param volumeEth Volume in ETH (wei)
      * @return feeBps Fee in basis points
      */
-    function calculateDynamicFee(uint256 volumeEth) public pure returns (uint256 feeBps) {
+    function calculateDynamicFee(
+        uint256 volumeEth
+    ) public pure returns (uint256 feeBps) {
         (uint256 alpha, uint256 vStartEth, uint256 feeStart) = _getTierParameters(volumeEth);
 
         uint256 volumeDiff = volumeEth > vStartEth ? (volumeEth - vStartEth) / ETH_DECIMALS : 0;
@@ -116,11 +118,9 @@ abstract contract DynamicFeeEth {
      * @return vStartEth Starting volume threshold for fee tier
      * @return feeStart Precomputed fee (bps) at v_start for fee tier
      */
-    function _getTierParameters(uint256 volumeEth)
-        internal
-        pure
-        returns (uint256 alpha, uint256 vStartEth, uint256 feeStart)
-    {
+    function _getTierParameters(
+        uint256 volumeEth
+    ) internal pure returns (uint256 alpha, uint256 vStartEth, uint256 feeStart) {
         if (volumeEth <= TIER_2_THRESHOLD_ETH) return (ALPHA_TIER_1, TIER_1_THRESHOLD_ETH, FEE_START_TIER_1);
         if (volumeEth <= TIER_3_THRESHOLD_ETH) return (ALPHA_TIER_2, TIER_2_THRESHOLD_ETH, FEE_START_TIER_2);
         if (volumeEth <= TIER_4_THRESHOLD_ETH) return (ALPHA_TIER_3, TIER_3_THRESHOLD_ETH, FEE_START_TIER_3);
@@ -133,7 +133,9 @@ abstract contract DynamicFeeEth {
      * @param x Unscaled exponent input
      * @return value The 1e18-scaled result of e^(-x/1000)
      */
-    function _calculateExponentialDecay(uint256 x) internal pure returns (uint256 value) {
+    function _calculateExponentialDecay(
+        uint256 x
+    ) internal pure returns (uint256 value) {
         return ExponentialMathLib.expNegXOver1000(x);
     }
 }

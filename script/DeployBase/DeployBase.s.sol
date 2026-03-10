@@ -8,7 +8,9 @@ import { DynamicFeeUsd } from "../../src/DynamicFeeUsd.sol";
 contract DynamicFeeEthConcrete is DynamicFeeEth { }
 
 contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) { }
+    constructor(
+        address _chainlinkEthUsd
+    ) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
 address constant CHAINLINK_ETH_USD_BASE = 0x71041dddad3595F9CEd3DcCFBe3D1F4b0a16Bb70;

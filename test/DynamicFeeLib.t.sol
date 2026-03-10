@@ -6,7 +6,9 @@ import { DynamicFeeLib } from "../src/DynamicFeeLib.sol";
 import { DynamicFeeEth } from "../src/DynamicFeeEth.sol";
 
 contract DynamicFeeLibHarness {
-    function calculateDynamicFee(uint256 volumeEth) external pure returns (uint256) {
+    function calculateDynamicFee(
+        uint256 volumeEth
+    ) external pure returns (uint256) {
         return DynamicFeeLib.calculateDynamicFee(volumeEth);
     }
 }
@@ -52,7 +54,9 @@ contract DynamicFeeLibTest is Test {
         assertLe(fee, FEE_MAX_BPS);
     }
 
-    function test_feeBounds_fuzz(uint256 volumeEth) public pure {
+    function test_feeBounds_fuzz(
+        uint256 volumeEth
+    ) public pure {
         volumeEth = bound(volumeEth, 0, 10_000_000 ether);
         uint256 fee = DynamicFeeLib.calculateDynamicFee(volumeEth);
         assertGe(fee, FEE_MIN_BPS);
@@ -78,7 +82,10 @@ contract DynamicFeeLibTest is Test {
         assertGe(fee5, fee6);
     }
 
-    function test_monotonicity_fuzz(uint256 v1, uint256 v2) public pure {
+    function test_monotonicity_fuzz(
+        uint256 v1,
+        uint256 v2
+    ) public pure {
         v1 = bound(v1, 0, 1_000_000 ether);
         v2 = bound(v2, 0, 1_000_000 ether);
         if (v1 < v2) {

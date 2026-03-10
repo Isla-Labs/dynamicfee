@@ -89,7 +89,9 @@ library DynamicFeeLib {
      * @param volumeEth Volume in ETH (wei)
      * @return feeBps Fee in basis points
      */
-    function calculateDynamicFee(uint256 volumeEth) internal pure returns (uint256 feeBps) {
+    function calculateDynamicFee(
+        uint256 volumeEth
+    ) internal pure returns (uint256 feeBps) {
         // Get decay factor (a), vStartUsd (v_start), feeStart (feeRate_start) based on volume tier
         (uint256 alpha, uint256 vStartEth, uint256 feeStart) = _getTierParameters(volumeEth);
 
@@ -121,11 +123,9 @@ library DynamicFeeLib {
      * @return vStartEth Starting volume threshold for fee tier
      * @return feeStart Precomputed fee (bps) at v_start for fee tier
      */
-    function _getTierParameters(uint256 volumeEth)
-        internal
-        pure
-        returns (uint256 alpha, uint256 vStartEth, uint256 feeStart)
-    {
+    function _getTierParameters(
+        uint256 volumeEth
+    ) internal pure returns (uint256 alpha, uint256 vStartEth, uint256 feeStart) {
         if (volumeEth <= TIER_2_THRESHOLD_ETH) return (ALPHA_TIER_1, TIER_1_THRESHOLD_ETH, FEE_START_TIER_1);
         if (volumeEth <= TIER_3_THRESHOLD_ETH) return (ALPHA_TIER_2, TIER_2_THRESHOLD_ETH, FEE_START_TIER_2);
         if (volumeEth <= TIER_4_THRESHOLD_ETH) return (ALPHA_TIER_3, TIER_3_THRESHOLD_ETH, FEE_START_TIER_3);
@@ -138,7 +138,9 @@ library DynamicFeeLib {
      * @param x Unscaled exponent input
      * @return value The 1e18-scaled result of e^(-x/1000)
      */
-    function _calculateExponentialDecay(uint256 x) internal pure returns (uint256 value) {
+    function _calculateExponentialDecay(
+        uint256 x
+    ) internal pure returns (uint256 value) {
         return ExponentialMathLib.expNegXOver1000(x);
     }
 }
