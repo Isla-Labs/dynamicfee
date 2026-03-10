@@ -7,7 +7,7 @@ type ChainDetails = {
   isTestnet: boolean;
 }
 
-const GITHUB_REPO = process.env.GITHUB_REPO ?? 'highpotential-xyz/dynamicfee';
+const GITHUB_REPO = process.env.GITHUB_REPO ?? 'USERNAME/repository-name';
 
 const chains: { [chainId: number]: ChainDetails } = {
   1: {
