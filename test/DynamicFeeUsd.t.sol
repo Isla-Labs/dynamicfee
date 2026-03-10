@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import {Test} from "forge-std/Test.sol";
-import {DynamicFeeUsd} from "../src/DynamicFeeUsd.sol";
+import { Test } from "forge-std/Test.sol";
+import { DynamicFeeUsd } from "../src/DynamicFeeUsd.sol";
 
 interface AggregatorV3Interface {
     function decimals() external view returns (uint8);
@@ -43,7 +43,7 @@ contract MockChainlinkEthUsd is AggregatorV3Interface {
 }
 
 contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) {}
+    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
 contract DynamicFeeUsdTest is Test {

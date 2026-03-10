@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import {Test} from "forge-std/Test.sol";
-import {DynamicFeeLib} from "../src/DynamicFeeLib.sol";
-import {DynamicFeeEth} from "../src/DynamicFeeEth.sol";
+import { Test } from "forge-std/Test.sol";
+import { DynamicFeeLib } from "../src/DynamicFeeLib.sol";
+import { DynamicFeeEth } from "../src/DynamicFeeEth.sol";
 
 contract DynamicFeeLibHarness {
     function calculateDynamicFee(uint256 volumeEth) external pure returns (uint256) {
@@ -11,7 +11,7 @@ contract DynamicFeeLibHarness {
     }
 }
 
-contract DynamicFeeEthHarness is DynamicFeeEth {}
+contract DynamicFeeEthHarness is DynamicFeeEth { }
 
 contract DynamicFeeLibTest is Test {
     DynamicFeeLibHarness harness;

@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import {Script} from "forge-std/Script.sol";
-import {DynamicFeeEth} from "../../src/DynamicFeeEth.sol";
-import {DynamicFeeUsd} from "../../src/DynamicFeeUsd.sol";
+import { Script } from "forge-std/Script.sol";
+import { DynamicFeeEth } from "../../src/DynamicFeeEth.sol";
+import { DynamicFeeUsd } from "../../src/DynamicFeeUsd.sol";
 
-contract DynamicFeeEthConcrete is DynamicFeeEth {}
+contract DynamicFeeEthConcrete is DynamicFeeEth { }
 
 contract DynamicFeeUsdConcrete is DynamicFeeUsd {
-    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) {}
+    constructor(address _chainlinkEthUsd) DynamicFeeUsd(_chainlinkEthUsd) { }
 }
 
 address constant CHAINLINK_ETH_USD_BASE_SEPOLIA = 0x4adc67696Ba383f43Dd60a9E78F2c97Fbb10B4E1;

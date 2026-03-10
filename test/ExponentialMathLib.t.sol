@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.34;
 
-import {Test} from "forge-std/Test.sol";
-import {ExponentialMathLib} from "../src/libraries/ExponentialMathLib.sol";
+import { Test } from "forge-std/Test.sol";
+import { ExponentialMathLib } from "../src/libraries/ExponentialMathLib.sol";
 
 contract ExponentialMathLibTest is Test {
     /// @dev Tolerance: 1e14 (0.0001% of 1e18) - Taylor approximation may have small error

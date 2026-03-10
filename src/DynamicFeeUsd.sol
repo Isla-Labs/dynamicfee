@@ -115,7 +115,7 @@ abstract contract DynamicFeeUsd {
         if (CHAINLINK_ETH_USD != address(0)) {
             try AggregatorV3Interface(CHAINLINK_ETH_USD).decimals() returns (uint8 d) {
                 _dec = d;
-            } catch {}
+            } catch { }
         }
         FEED_DECIMALS = _dec;
     }
@@ -212,7 +212,7 @@ abstract contract DynamicFeeUsd {
                     return uint256(answer) * factor;
                 }
             }
-        } catch {}
+        } catch { }
 
         return FALLBACK_ETH_PRICE;
     }
