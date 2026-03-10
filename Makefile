@@ -56,7 +56,7 @@ deploy-base-sepolia-usd:
 		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE_SEPOLIA)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 	$(MAKE) generate-history
 
-deploy-base-sepolia: deploy-base-sepolia-exp deploy-base-sepolia-lib deploy-base-sepolia-eth deploy-base-sepolia-usd
+deploy-base-sepolia: deploy-base-sepolia-lib deploy-base-sepolia-eth deploy-base-sepolia-usd
 
 # Base mainnet
 deploy-base-exp:
@@ -107,7 +107,7 @@ deploy-base-usd:
 		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_BASE)" --etherscan-api-key $(BASESCAN_API_KEY) --broadcast --slow
 	$(MAKE) generate-history
 
-deploy-base: deploy-base-exp deploy-base-lib deploy-base-eth deploy-base-usd
+deploy-base: deploy-base-lib deploy-base-eth deploy-base-usd
 
 # Ethereum Sepolia
 deploy-ethereum-sepolia-exp:
@@ -158,7 +158,7 @@ deploy-ethereum-sepolia-usd:
 		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM_MAINNET)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 	$(MAKE) generate-history
 
-deploy-ethereum-sepolia: deploy-ethereum-sepolia-exp deploy-ethereum-sepolia-lib deploy-ethereum-sepolia-eth deploy-ethereum-sepolia-usd
+deploy-ethereum-sepolia: deploy-ethereum-sepolia-lib deploy-ethereum-sepolia-eth deploy-ethereum-sepolia-usd
 
 # Ethereum mainnet
 deploy-ethereum-exp:
@@ -209,7 +209,7 @@ deploy-ethereum-usd:
 		--verify --verifier-url "$(VERIFIER_URL)$(CHAIN_ID_ETHEREUM)" --etherscan-api-key $(ETHERSCAN_API_KEY) --broadcast --slow
 	$(MAKE) generate-history
 
-deploy-ethereum: deploy-ethereum-exp deploy-ethereum-lib deploy-ethereum-eth deploy-ethereum-usd
+deploy-ethereum: deploy-ethereum-lib deploy-ethereum-eth deploy-ethereum-usd
 
 # Build & test
 install:
