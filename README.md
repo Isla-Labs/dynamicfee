@@ -9,6 +9,7 @@ A gas-efficient, zero-dependency library for dynamic fee calculation with expone
 ```
 ϕ(v) = f_min + (ϕ_start - f_min) ⋅ e^(−α ⋅ (v−v_start) / κ)
 ```
+The fee rate decays exponentially as transaction volume increases. Four predefined tiers each have their own `v_start`, `ϕ_start`, and `α`. The only variable input is transaction volume for fetching the variable fee rate output.
 
 | Symbol | Description |
 |--------|--------------|
@@ -19,8 +20,6 @@ A gas-efficient, zero-dependency library for dynamic fee calculation with expone
 | ϕ_start | Initial fee value at tier start (bps) |
 | α | Decay factor for the current tier |
 | κ | Scale parameter (1000) |
-
-The fee rate decays exponentially as transaction volume increases. Four predefined tiers each have their own `v_start`, `ϕ_start`, and `α`. The only variable input is transaction volume for fetching the variable fee rate output.
 
 ## Variants
 
