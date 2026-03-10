@@ -57,6 +57,10 @@ interface AggregatorV3Interface {
 /**
  * @title DynamicFeeUsd
  * @notice Dynamic fee with Chainlink integration for stable USD tiers; uses ExponentialMathLib
+ * @dev Tiers are in USD. All parameters are configurable; base version uses placeholders.
+ * @dev FEE_START is the output at the beginning of each tier
+ * @dev ALPHA_TIER is configurable decay factor for each tier (higher being faster decline)
+ * @dev TIER is transaction volume threshold (starting at zero for clarity)
  * @author Isla Labs (Tom Jarvis | 0xBasti42)
  * @custom:security-contact security@islalabs.co
  */

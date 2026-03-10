@@ -45,7 +45,7 @@ import {ExponentialMathLib} from "./libraries/ExponentialMathLib.sol";
 /**
  * @title DynamicFeeEth
  * @notice Abstract contract for dynamic fee calculation in ETH terms; no oracle, uses ExponentialMathLib
- * @dev All parameters are configurable; base version uses placeholders.
+ * @dev Tiers are in ETH. All parameters are configurable; base version uses placeholders.
  * @dev FEE_START is the output at the beginning of each tier
  * @dev ALPHA_TIER is configurable decay factor for each tier (higher being faster decline)
  * @dev TIER is transaction volume threshold (starting at zero for clarity)
