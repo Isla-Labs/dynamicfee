@@ -14,6 +14,7 @@ A gas-efficient, zero-dependency library for dynamic fee calculation with expone
 | v_start | Starting volume threshold for the current tier |
 | ϕ_start | Initial fee value at tier start (bps) |
 | α | Decay factor for the current tier |
+| e | Euler's number |
 | κ | Scale parameter (1000) |
 
 ```
