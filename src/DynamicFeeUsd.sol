@@ -27,18 +27,19 @@ pragma solidity ^0.8.34;
  *
  * ─── Fee Bounds
  *
- *     - Maximum: 2.00% for low volume transactions
- *     - Minimum: 0.60% for high volume transactions
+ *     - Maximum: 5.00% for low volume transactions
+ *     - Minimum: 1.00% for high volume transactions
  *     - Scale parameter κ: always 1000
  *
  * ─── Tiers
  *
- *     Four tiers apply at different volume thresholds ($0, $25k, $250k, $2.5M), converted to USD to keep tiers
- *     stable. Each tier's decay factor (α) determines how quickly the fee rate declines as volume increases.
+ *     Four tiers apply at different volume thresholds ($0, $500, $5000, $50_000 in the placeholder examples), 
+ *     where the volume is converted to USD to keep tiers stable. Each tier's decay factor (α) determines how 
+ *     quickly the fee rate declines as transaction volume increases.
  *
  */
 
-import {ExponentialMathLib} from "./libraries/ExponentialMathLib.sol";
+import { ExponentialMathLib } from "./libraries/ExponentialMathLib.sol";
 
 interface AggregatorV3Interface {
     function decimals() external view returns (uint8);

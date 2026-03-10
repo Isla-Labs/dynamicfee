@@ -27,20 +27,22 @@ pragma solidity ^0.8.34;
  *
  * ─── ETH Terms
  *
- *     Tiers are denominated in ETH (not USD). No oracle required. Alpha values calibrated for ~$3k/ETH.
+ *     Tiers are denominated in ETH (not USD). No oracle required.
  *
  * ─── Fee Bounds
  *
- *     - Maximum: 5.00% for low volume transactions
- *     - Minimum: 1.00% for high volume transactions
+ *     - Maximum: 2.00% for low volume transactions
+ *     - Minimum: 0.60% for high volume transactions
  *     - Scale parameter κ: always 1000
  *
  * ─── Tiers
  *
- *     Four tiers apply at different volume thresholds (0, 8 ETH, 80 ETH, 800 ETH).
+ *     Four tiers apply at different volume thresholds (0, 2 ETH, 20 ETH, 200 ETH in the placeholder examples).
+ *     Each tier's decay factor (α) determines how quickly the fee rate declines as transaction volume increases.
+ *
  */
 
-import {ExponentialMathLib} from "./libraries/ExponentialMathLib.sol";
+import { ExponentialMathLib } from "./libraries/ExponentialMathLib.sol";
 
 /**
  * @title DynamicFeeEth
