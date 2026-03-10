@@ -1,0 +1,61 @@
+{
+  "transactions": [
+    {
+      "hash": "0xd5c76bd315e385c7eba8f9b35af532cad42837d24759745e76a138d0bd47b81c",
+      "transactionType": "CREATE",
+      "contractName": "DynamicFeeLib",
+      "contractAddress": "0xd0fd0f2527a6924000e726d95114594eaf2040c1",
+      "function": null,
+      "arguments": null,
+      "transaction": {
+        "from": "0x2e0189701ecae2109cc7f8f4b3b9ceafade9d49f",
+        "gas": "0x16d9d",
+        "value": "0x0",
+        "input": "0x60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea26469706673582212202de1d73b95952476ca5b125ffa35de29ff89d58d1e032aeb2b4195d0d983dd5764736f6c63430008220033",
+        "nonce": "0xb",
+        "chainId": "0x14a34"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": "0x1",
+      "cumulativeGasUsed": "0x4007f2",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "transactionHash": "0xd5c76bd315e385c7eba8f9b35af532cad42837d24759745e76a138d0bd47b81c",
+      "transactionIndex": "0x17",
+      "blockHash": "0x30fa99abe09d200cc7079891f49f9ef09197efa46520246c8f86273686a09793",
+      "blockNumber": "0x24e7ed4",
+      "gasUsed": "0x1193e",
+      "effectiveGasPrice": "0x5b8d80",
+      "blobGasUsed": "0x4c04",
+      "from": "0x2e0189701ecae2109cc7f8f4b3b9ceafade9d49f",
+      "to": null,
+      "contractAddress": "0xd0fd0f2527a6924000e726d95114594eaf2040c1",
+      "daFootprintGasScalar": "0x8b",
+      "l1BaseFeeScalar": "0x44d",
+      "l1BlobBaseFee": "0x1",
+      "l1BlobBaseFeeScalar": "0xa118b",
+      "l1Fee": "0x78",
+      "l1GasPrice": "0xb",
+      "l1GasUsed": "0x8c9"
+    }
+  ],
+  "libraries": [
+    "src/libraries/ExponentialMathLib.sol:ExponentialMathLib:0x2b3C8603fC3d8E41598a0444e5CF0907571637F1"
+  ],
+  "pending": [],
+  "returns": {
+    "0": {
+      "internal_type": "address",
+      "value": "0xD0fD0f2527a6924000e726d95114594EAf2040C1"
+    }
+  },
+  "timestamp": 1773165722086,
+  "chain": 84532,
+  "commit": "29d4a10"
+}
