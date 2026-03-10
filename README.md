@@ -1,4 +1,5 @@
 [![License:MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/license/mit) [![solidity](https://img.shields.io/badge/solidity-%5E0.8.34-black)](https://docs.soliditylang.org/en/v0.8.34/) [![Foundry](https://img.shields.io/badge/Built%20with-Foundry-000000.svg)](https://getfoundry.sh/)
+
 # DynamicFee
 
 A gas-efficient, zero-dependency library for dynamic fee calculation with exponential decay. Fee rates decline as transaction volume increases, within configurable tiers.
