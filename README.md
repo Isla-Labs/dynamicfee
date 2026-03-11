@@ -72,7 +72,7 @@ Use when you want a simple, trustless dynamic fee library without external price
 | `DynamicFeeUsd` | Abstract | USD-denominated; Chainlink + fallback |
 | `ExponentialMathLib` | Library | e^(-x/1000) with 18-decimal precision |
 
-Latest deployments can be found [here](./Deployments.md) and historical deployment logs for Base and Base Sepolia can be found in the [deployments](./deployments/) folder.
+Latest deployments can be found [here](./Deployments.md) and historical deployment logs can be found in the [deployments](./deployments/) folder.
 
 ## Getting Started
 
