@@ -93,10 +93,12 @@ Deploy ExponentialMathLib first, then deploy DynamicFeeLib, DynamicFeeEth, and/o
 cp .env.example .env
 
 # Deploy all (exp + lib + eth + usd)
-make deploy-base-sepolia      # Base Sepolia
-make deploy-base              # Base mainnet
+make deploy-ethereum          # Ethereum
 make deploy-ethereum-sepolia  # Ethereum Sepolia
-make deploy-ethereum          # Ethereum mainnet
+make deploy-base              # Base
+make deploy-base-sepolia      # Base Sepolia
+make deploy-arbitrum          # Arbitrum
+make deploy-arbitrum-sepolia  # Arbitrum Sepolia
 
 # Deploy individually (requires ExponentialMathLib first)
 make deploy-base-sepolia-exp   # ExponentialMathLib only
