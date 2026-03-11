@@ -5,13 +5,13 @@ import { Script } from "forge-std/Script.sol";
 import { DynamicFeeEth } from "src/DynamicFeeEth.sol";
 import { DynamicFeeUsd } from "src/DynamicFeeUsd.sol";
 
-address constant CHAINLINK_ETH_USD_ETHEREUM_SEPOLIA = 0x694AA1769357215DE4FAC081bf1f309aDC325306;
+address constant CHAINLINK_ETH_USD_ARBITRUM_SEPOLIA = 0xd30e2101a97dcbAeBCBC04F14C3f624E67A35165;
 
 contract DeployAll is Script {
     function run() external {
         vm.startBroadcast();
         new DynamicFeeEth();
-        new DynamicFeeUsd(CHAINLINK_ETH_USD_ETHEREUM_SEPOLIA);
+        new DynamicFeeUsd(CHAINLINK_ETH_USD_ARBITRUM_SEPOLIA);
         vm.stopBroadcast();
     }
 }
@@ -46,7 +46,7 @@ contract DeployDynamicFeeEth is Script {
 contract DeployDynamicFeeUsd is Script {
     function run() external returns (address) {
         vm.startBroadcast();
-        DynamicFeeUsd feeUsd = new DynamicFeeUsd(CHAINLINK_ETH_USD_ETHEREUM_SEPOLIA);
+        DynamicFeeUsd feeUsd = new DynamicFeeUsd(CHAINLINK_ETH_USD_ARBITRUM_SEPOLIA);
         vm.stopBroadcast();
         return address(feeUsd);
     }
