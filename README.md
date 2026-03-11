@@ -100,14 +100,14 @@ make deploy-base-sepolia      # Base Sepolia
 make deploy-arbitrum          # Arbitrum
 make deploy-arbitrum-sepolia  # Arbitrum Sepolia
 
-# Deploy individually (requires ExponentialMathLib first)
+# Deploy individually (Base Sepolia used for demonstration)
 make deploy-base-sepolia-exp   # ExponentialMathLib only
 make deploy-base-sepolia-lib   # DynamicFeeLib
 make deploy-base-sepolia-eth   # DynamicFeeEth
 make deploy-base-sepolia-usd   # DynamicFeeUsd
 ```
 
-For lib/eth/usd targets, ExponentialMathLib is resolved in order: (1) chain-specific `EXP_LIB_*` in `.env` if set, (2) broadcast file from a prior `-exp` deploy, or (3) auto-deploy ExponentialMathLib first. Chainlink ETH/USD addresses are set per network in the scripts.
+For usd targets, Chainlink ETH/USD addresses are set per network in the scripts.
 
 ## Blueprint
 

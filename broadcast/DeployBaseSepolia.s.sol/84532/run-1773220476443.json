@@ -1,18 +1,18 @@
 {
   "transactions": [
     {
-      "hash": "0xb2e0c6147496f9ac8faa50f9f51f1995e49e7ad2d23da69c8a15c5c7a2711ce0",
+      "hash": "0x4b78ba17804198f976fdf56b43b8e9ed090d6764f5feef8022034d4058efdc78",
       "transactionType": "CREATE",
-      "contractName": "DynamicFeeLib",
-      "contractAddress": "0x8dc3697f819d6f438351bf00d295591d78143da1",
+      "contractName": "ExponentialMathLib",
+      "contractAddress": "0x2c835d25058a7a2039a28994a92148ab3cb4dc55",
       "function": null,
       "arguments": null,
       "transaction": {
         "from": "0x2e0189701ecae2109cc7f8f4b3b9ceafade9d49f",
         "gas": "0x16d9d",
         "value": "0x0",
-        "input": "0x60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea26469706673582212203b1b921f3269adcca43876f3ec02e7e1c56b3541e042f75447c8356862f6a42b64736f6c63430008220033",
-        "nonce": "0x12",
+        "input": "0x60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220391c09201203adfc79bdfd186c0189fd2b71cab8acaf9dd835d4a4e710efe8b264736f6c63430008220033",
+        "nonce": "0x11",
         "chainId": "0x14a34"
       },
       "additionalContracts": [],
@@ -22,40 +22,38 @@
   "receipts": [
     {
       "status": "0x1",
-      "cumulativeGasUsed": "0x8af47",
+      "cumulativeGasUsed": "0x3d6f44",
       "logs": [],
       "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
       "type": "0x2",
-      "transactionHash": "0xb2e0c6147496f9ac8faa50f9f51f1995e49e7ad2d23da69c8a15c5c7a2711ce0",
-      "transactionIndex": "0x4",
+      "transactionHash": "0x4b78ba17804198f976fdf56b43b8e9ed090d6764f5feef8022034d4058efdc78",
+      "transactionIndex": "0x14",
       "blockHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-      "blockNumber": "0x24ee9f4",
+      "blockNumber": "0x24ee9c4",
       "gasUsed": "0x1193e",
       "effectiveGasPrice": "0x5b8d80",
       "blobGasUsed": "0x4c04",
       "from": "0x2e0189701ecae2109cc7f8f4b3b9ceafade9d49f",
       "to": null,
-      "contractAddress": "0x8dc3697f819d6f438351bf00d295591d78143da1",
+      "contractAddress": "0x2c835d25058a7a2039a28994a92148ab3cb4dc55",
       "daFootprintGasScalar": "0x8b",
       "l1BaseFeeScalar": "0x44d",
       "l1BlobBaseFee": "0x1",
       "l1BlobBaseFeeScalar": "0xa118b",
-      "l1Fee": "0x55",
+      "l1Fee": "0x75",
       "l1GasPrice": "0xb",
       "l1GasUsed": "0x8c9"
     }
   ],
-  "libraries": [
-    "src/libraries/ExponentialMathLib.sol:ExponentialMathLib:0x2c835d25058a7a2039a28994a92148ab3cb4dc55"
-  ],
+  "libraries": [],
   "pending": [],
   "returns": {
     "0": {
       "internal_type": "address",
-      "value": "0x8dc3697f819d6f438351Bf00d295591D78143Da1"
+      "value": "0x2c835d25058A7A2039A28994a92148Ab3CB4DC55"
     }
   },
-  "timestamp": 1773220574540,
+  "timestamp": 1773220476443,
   "chain": 84532,
   "commit": "6143a1c"
 }
