@@ -1,0 +1,34 @@
+{
+  "transactions": [
+    {
+      "hash": null,
+      "transactionType": "CREATE",
+      "contractName": "ExponentialMathLib",
+      "contractAddress": "0x240913ba8d1a4b8c6f85a9cc2ac674ac385fcf74",
+      "function": null,
+      "arguments": null,
+      "transaction": {
+        "from": "0x2e0189701ecae2109cc7f8f4b3b9ceafade9d49f",
+        "gas": "0x16d9d",
+        "value": "0x0",
+        "input": "0x60556032600b8282823980515f1a607314602657634e487b7160e01b5f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220391c09201203adfc79bdfd186c0189fd2b71cab8acaf9dd835d4a4e710efe8b264736f6c63430008220033",
+        "nonce": "0x0",
+        "chainId": "0xaa36a7"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [],
+  "libraries": [],
+  "pending": [],
+  "returns": {
+    "0": {
+      "internal_type": "address",
+      "value": "0x240913ba8D1a4b8C6F85A9Cc2ac674AC385FCf74"
+    }
+  },
+  "timestamp": 1773167440885,
+  "chain": 11155111,
+  "commit": "c6ea15f"
+}

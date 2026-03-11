@@ -30,6 +30,16 @@ const chains: { [chainId: number]: ChainDetails } = {
     explorerUrl: 'https://sepolia.basescan.org',
     isTestnet: true,
   },
+  42161: {
+    name: 'Arbitrum One',
+    explorerUrl: 'https://arbiscan.io',
+    isTestnet: false,
+  },
+  421614: {
+    name: 'Arbitrum Sepolia',
+    explorerUrl: 'https://sepolia.arbiscan.io',
+    isTestnet: true,
+  },
 };
 
 type Transaction = {
